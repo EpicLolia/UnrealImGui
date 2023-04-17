@@ -262,6 +262,9 @@ void FImGuiContextManager::BuildFontAtlas()
 		FontConfig.SizePixels = FMath::RoundFromZero(13.f * DPIScale);
 		FontAtlas.AddFontDefault(&FontConfig);
 
+		const FString FilePathFull = FPaths::EngineContentDir() + "Slate/Fonts/DroidSansFallback.ttf";
+		FontAtlas.AddFontFromFileTTF(TCHAR_TO_ANSI(*FilePathFull), FontConfig.SizePixels * 1.3f, &FontConfig, FontAtlas.GetGlyphRangesChineseFull());
+
 		unsigned char* Pixels;
 		int Width, Height, Bpp;
 		FontAtlas.GetTexDataAsRGBA32(&Pixels, &Width, &Height, &Bpp);
